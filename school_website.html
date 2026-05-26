@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Bachchhala Secondary School</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #7B1C2E;
+    --deep-maroon: #4E0F1C;
+    --gold: #C9962A;
+    --gold-light: #E8B84B;
+    --cream: #FDF6EC;
+    --white: #fff;
+    --text-dark: #1a1a1a;
+    --text-mid: #444;
+    --blue-accent: #1A3A6B;
+    --shadow: 0 4px 32px rgba(123,28,46,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+  /* ── TOP BAR ── */
+  .topbar { background: var(--deep-maroon); color: #e8c97a; font-size: 0.78rem; letter-spacing: 0.05em; padding: 6px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .topbar a { color: #e8c97a; text-decoration: none; }
+  .topbar a:hover { color: var(--gold-light); }
+
+  /* ── HEADER ── */
+  header { background: linear-gradient(135deg, var(--maroon) 0%, var(--deep-maroon) 60%, #2a0a12 100%); padding: 0; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  .header-inner { position: relative; z-index: 2; display: flex; align-items: center; gap: 30px; padding: 28px 40px; }
+  .school-emblem { width: 90px; height: 90px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; flex-shrink: 0; border: 4px solid var(--gold-light); box-shadow: 0 0 0 6px rgba(201,150,42,0.18), 0 8px 30px rgba(0,0,0,0.3); animation: emblemPop 0.8s cubic-bezier(.23,1.2,.55,1) both; overflow: hidden; }
+  .school-emblem img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  @keyframes emblemPop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .header-text { animation: slideIn 0.7s 0.2s both; }
+  @keyframes slideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+  .header-text .devanagari { font-family: 'Tiro Devanagari Hindi', serif; font-size: 2.1rem; color: var(--gold-light); line-height: 1.1; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+  .header-text h1 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.2; }
+  .header-text .tagline { font-size: 0.82rem; color: rgba(255,255,255,0.65); letter-spacing: 0.15em; margin-top: 4px; }
+  .header-badges { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(201,150,42,0.4); color: var(--gold-light); font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.05em; }
+
+  /* ── NAV ── */
+  nav { background: var(--white); border-bottom: 3px solid var(--gold); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(123,28,46,0.08); }
+  .nav-inner { display: flex; justify-content: center; align-items: center; gap: 0; padding: 0 40px; overflow-x: auto; }
+  nav a { text-decoration: none; color: var(--maroon); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 20px; position: relative; transition: color 0.2s; white-space: nowrap; }
+  nav a::after { content: ''; position: absolute; bottom: 0; left: 50%; right: 50%; height: 3px; background: var(--gold); transition: left 0.2s, right 0.2s; }
+  nav a:hover { color: var(--deep-maroon); }
+  nav a:hover::after { left: 15%; right: 15%; }
+
+  /* ── HERO BANNER ── */
+  .hero { background: linear-gradient(120deg, var(--deep-maroon) 0%, var(--maroon) 50%, #9B2335 100%); color: var(--white); text-align: center; padding: 80px 40px 90px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(201,150,42,0.15) 0%, transparent 70%); }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(201,150,42,0.1) 0%, transparent 70%); }
+  .hero-content { position: relative; z-index: 2; max-width: 750px; margin: 0 auto; }
+  .hero-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 900; line-height: 1.3; margin-bottom: 18px; animation: fadeUp 0.8s 0.4s both; }
+  .hero-quote span { color: var(--gold-light); }
+  .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 550px; margin: 0 auto 30px; animation: fadeUp 0.8s 0.6s both; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.8s both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .btn { display: inline-block; padding: 13px 32px; border-radius: 4px; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .btn-gold { background: var(--gold); color: var(--deep-maroon); }
+  .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: var(--white); }
+  .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+  /* ── NOTICE TICKER ── */
+  .ticker { background: var(--gold); color: var(--deep-maroon); padding: 10px 0; overflow: hidden; display: flex; align-items: center; }
+  .ticker-label { background: var(--deep-maroon); color: var(--gold-light); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; padding: 0 18px; white-space: nowrap; height: 100%; display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .ticker-track { display: flex; gap: 60px; animation: ticker 30s linear infinite; white-space: nowrap; font-size: 0.85rem; font-weight: 700; }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ── SECTIONS ── */
+  section { padding: 70px 40px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--maroon); text-align: center; margin-bottom: 8px; }
+  .section-sub { text-align: center; color: var(--text-mid); font-size: 0.9rem; margin-bottom: 48px; letter-spacing: 0.05em; }
+  .divider { width: 60px; height: 3px; background: var(--gold); margin: 10px auto 40px; border-radius: 2px; }
+
+  /* ── STATS ── */
+  .stats-bar { background: var(--maroon); padding: 40px 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+  @media (max-width: 700px) { .stats-bar { grid-template-columns: repeat(2,1fr); } }
+  .stat-item { text-align: center; padding: 20px; color: var(--white); border-right: 1px solid rgba(255,255,255,0.15); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; color: var(--gold-light); line-height: 1; }
+  .stat-label { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-top: 6px; }
+
+  /* ── CARDS ── */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; }
+  .card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(123,28,46,0.15); }
+  .card-icon { background: linear-gradient(135deg, var(--maroon), var(--deep-maroon)); padding: 28px 24px 20px; text-align: center; }
+  .card-icon .icon { font-size: 2.8rem; }
+  .card-body { padding: 22px 24px 24px; }
+  .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--maroon); margin-bottom: 8px; }
+  .card-body p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
+
+  /* ── NOTICE BOARD ── */
+  .notices-section { background: #f7eee6; }
+  .notices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+  @media (max-width: 640px) { .notices-grid { grid-template-columns: 1fr; } }
+  .notice-card { background: var(--white); border-left: 4px solid var(--gold); border-radius: 6px; padding: 18px 20px; box-shadow: var(--shadow); display: flex; gap: 14px; align-items: flex-start; }
+  .notice-date { background: var(--maroon); color: var(--white); border-radius: 6px; text-align: center; padding: 8px 10px; min-width: 48px; flex-shrink: 0; }
+  .notice-date .day { font-size: 1.3rem; font-weight: 900; line-height: 1; }
+  .notice-date .mon { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; }
+  .notice-info h4 { font-size: 0.92rem; font-weight: 700; color: var(--deep-maroon); margin-bottom: 4px; }
+  .notice-info p { font-size: 0.8rem; color: var(--text-mid); line-height: 1.5; }
+  .notice-tag { display: inline-block; font-size: 0.65rem; background: #f0e0d0; color: var(--maroon); padding: 2px 8px; border-radius: 10px; font-weight: 700; letter-spacing: 0.05em; margin-top: 6px; text-transform: uppercase; }
+
+  /* ── FACILITIES ── */
+  .facilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+  .facility-item { text-align: center; padding: 28px 16px; background: var(--white); border-radius: 8px; box-shadow: var(--shadow); border-top: 3px solid var(--gold); transition: border-color 0.2s, transform 0.2s; }
+  .facility-item:hover { border-color: var(--maroon); transform: translateY(-4px); }
+  .facility-item .ficon { font-size: 2.2rem; margin-bottom: 10px; }
+  .facility-item h4 { font-size: 0.9rem; font-weight: 700; color: var(--maroon); letter-spacing: 0.04em; }
+
+  /* ── PRINCIPAL MESSAGE ── */
+  .principal-section { background: linear-gradient(135deg, var(--deep-maroon) 0%, #6B0F20 100%); color: var(--white); }
+  .principal-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr; gap: 50px; align-items: center; }
+  @media (max-width: 620px) { .principal-inner { grid-template-columns: 1fr; text-align: center; } }
+  .principal-avatar { width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 4px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 4rem; margin: 0 auto; box-shadow: 0 0 0 8px rgba(201,150,42,0.15); overflow: hidden; }
+  .principal-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .principal-quote { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-style: italic; line-height: 1.6; color: rgba(255,255,255,0.9); border-left: 3px solid var(--gold); padding-left: 20px; margin-bottom: 20px; }
+  .principal-name { font-weight: 700; color: var(--gold-light); font-size: 1rem; letter-spacing: 0.06em; }
+  .principal-title { font-size: 0.8rem; opacity: 0.65; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── GALLERY ── */
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1000px; margin: 0 auto; }
+  @media (max-width: 640px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
+  .gallery-item { aspect-ratio: 1; background: linear-gradient(135deg, #c8a0b0 0%, var(--maroon) 100%); border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: rgba(255,255,255,0.5); position: relative; cursor: pointer; transition: transform 0.25s; }
+  .gallery-item:hover { transform: scale(1.04); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #a0b8c8 0%, var(--blue-accent) 100%); }
+  .gallery-item:nth-child(3) { background: linear-gradient(135deg, #b8c8a0 0%, #2d6b2a 100%); }
+  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #c8c0a0 0%, #6b5a2a 100%); }
+  .gallery-item:nth-child(5) { background: linear-gradient(135deg, #c8a8c0 0%, #6b2a5a 100%); }
+  .gallery-item:nth-child(6) { background: linear-gradient(135deg, #a8c8c0 0%, #2a6b5a 100%); }
+  .gallery-item:nth-child(7) { background: linear-gradient(135deg, #c8c8a0 0%, #6b6b2a 100%); }
+  .gallery-item:nth-child(8) { background: linear-gradient(135deg, #b0a0c8 0%, #4b2a6b 100%); }
+  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: var(--white); font-size: 0.72rem; padding: 16px 10px 8px; text-align: center; font-weight: 700; letter-spacing: 0.05em; transform: translateY(100%); transition: transform 0.25s; }
+  .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+  /* ── CONTACT ── */
+  .contact-section { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 900px; margin: 0 auto; }
+  @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--maroon); margin-bottom: 22px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 0.9rem; color: var(--text-mid); }
+  .contact-icon { width: 36px; height: 36px; background: var(--maroon); color: var(--gold-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-form input, .contact-form textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #ddd; border-radius: 6px; margin-bottom: 12px; font-family: 'Lato', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--maroon); }
+  .contact-form textarea { height: 110px; resize: vertical; }
+  .contact-form button { background: var(--maroon); color: var(--white); border: none; padding: 13px 32px; border-radius: 4px; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%; }
+  .contact-form button:hover { background: var(--deep-maroon); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--deep-maroon); color: rgba(255,255,255,0.65); padding: 48px 40px 28px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto 32px; }
+  @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand .devanagari { font-family: 'Tiro Devanagari Hindi', serif; font-size: 1.3rem; color: var(--gold-light); margin-bottom: 4px; }
+  .footer-brand h4 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1rem; margin-bottom: 12px; }
+  .footer-brand p { font-size: 0.8rem; line-height: 1.7; max-width: 280px; }
+  footer h5 { color: var(--gold-light); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 8px; }
+  footer ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.84rem; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--gold-light); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.78rem; }
+  .footer-bottom span { color: var(--gold-light); }
+  .social-links { display: flex; gap: 10px; margin-top: 14px; }
+  .social-btn { width: 34px; height: 34px; background: rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; text-decoration: none; transition: background 0.2s; }
+  .social-btn:hover { background: var(--gold); }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .header-inner { padding: 20px; gap: 16px; }
+    .header-text h1 { font-size: 1.15rem; }
+    .header-text .devanagari { font-size: 1.5rem; }
+    .school-emblem { width: 68px; height: 68px; font-size: 1.8rem; }
+    section { padding: 50px 20px; }
+    .stats-bar { padding: 30px 20px; }
+    nav a { padding: 14px 12px; font-size: 0.78rem; }
+    .topbar { padding: 6px 16px; font-size: 0.7rem; }
+    .hero { padding: 50px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>📍 <span id="topAddr">Likhu-6, Nuwakot, Bagmati Province, Nepal</span></span>
+  <span>📞 <span id="topPhone">+977-9843684295</span> &nbsp;|&nbsp; <a id="topEmail" href="mailto:info@bachchhala.edu.np">info@bachchhala.edu.np</a> &nbsp;|&nbsp; <a href="https://bachhala-attendance.onrender.com/" target="_blank">Attendance Portal</a></span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="school-emblem" id="schoolEmblem">🏫</div>
+    <div class="header-text">
+      <div class="devanagari">श्री बच्छला माध्यमिक विद्यालय</div>
+      <h1>Shree Bachchhala Secondary School</h1>
+      <div class="tagline">Likhu-6, Nuwakot &nbsp;•&nbsp; Estd. 2040 B.S. &nbsp;•&nbsp; Committed to Excellence</div>
+      <div class="header-badges">
+        <span class="badge">📚 ECD – Grade 10</span>
+        <span class="badge">🏆 Govt. Affiliated</span>
+        <span class="badge">🌱 Since 2040 B.S.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#academics">Academics</a>
+    <a href="#notices">Notices</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <div class="hero-quote" id="heroQuote">
+      Nurturing <span>Bright Minds</span>,<br>Building a <span>Better Nepal</span>
+    </div>
+    <p class="hero-sub" id="heroSub">
+      Shree Bachchhala Secondary School has been a beacon of quality education in Nuwakot district, empowering students with knowledge, values, and skills for a prosperous future.
+    </p>
+    <div class="hero-btns">
+      <a href="#about" class="btn btn-gold">Learn More</a>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" id="tickerEl">
+  <div class="ticker-label">📢 NOTICES</div>
+  <div class="ticker-track" id="tickerTrack">
+    <span>📅 SEE Exam Result published — Congratulations to all students!</span>
+    <span>🎓 Admission Open for Grade 1–12 — 2081 Academic Year</span>
+    <span>📝 Quarterly Exam Schedule announced — check notice board</span>
+    <span>🏆 School Annual Sports Day — Chaitra 15, 2081</span>
+    <span>👨‍🏫 Parent-Teacher Meeting — Falgun 28, 2081</span>
+    <span>📅 SEE Exam Result published — Congratulations to all students!</span>
+    <span>🎓 Admission Open for Grade 1–12 — 2081 Academic Year</span>
+    <span>📝 Quarterly Exam Schedule announced — check notice board</span>
+    <span>🏆 School Annual Sports Day — Chaitra 15, 2081</span>
+    <span>👨‍🏫 Parent-Teacher Meeting — Falgun 28, 2081</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar reveal" id="statsBar">
+  <div class="stat-item"><div class="stat-num">300+</div><div class="stat-label">Students</div></div>
+  <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Teachers & Staff</div></div>
+  <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Years of Excellence</div></div>
+  <div class="stat-item"><div class="stat-num">80%+</div><div class="stat-label">SEE Pass Rate</div></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title reveal">About Our School</h2>
+  <div class="divider"></div>
+  <div class="cards-grid reveal">
+    <div class="card">
+      <div class="card-icon"><span class="icon">🎯</span></div>
+      <div class="card-body">
+        <h3>Our Mission</h3>
+        <p id="missionTxt">To provide quality, inclusive, and accessible education that equips students with critical thinking, ethical values, and 21st-century skills for national development.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><span class="icon">🌟</span></div>
+      <div class="card-body">
+        <h3>Our Vision</h3>
+        <p id="visionTxt">To be the leading educational institution in Nuwakot, producing responsible citizens, compassionate leaders, and skilled professionals who contribute to Nepal's progress.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><span class="icon">💎</span></div>
+      <div class="card-body">
+        <h3>Our Values</h3>
+        <p id="valuesTxt">Integrity, discipline, respect for diversity, academic excellence, and community service are the cornerstones of our school culture and daily practice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMICS (static) -->
+<section id="academics" style="background:#f7eee6;">
+  <h2 class="section-title reveal">Academic Programs</h2>
+  <div class="divider"></div>
+  <div class="cards-grid reveal">
+    <div class="card">
+      <div class="card-icon"><span class="icon">📖</span></div>
+      <div class="card-body">
+        <h3>Primary Level (Grade 1–5)</h3>
+        <p>A nurturing foundation in core subjects — Nepali, English, Mathematics, Science, and Social Studies — with emphasis on learning through play and exploration.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><span class="icon">🔬</span></div>
+      <div class="card-body">
+        <h3>Lower Secondary (Grade 6–8)</h3>
+        <p>Deeper engagement with science, mathematics, and humanities. Introduction to computer education and practical life skills to prepare well-rounded students.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon"><span class="icon">🎓</span></div>
+      <div class="card-body">
+        <h3>Secondary Level (Grade 9–12)</h3>
+        <p>Rigorous SEE and +2 preparation with Science, Management, and Humanities streams. Strong focus on results, university readiness, and career guidance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICE BOARD -->
+<section id="notices" class="notices-section">
+  <h2 class="section-title reveal">Notice Board</h2>
+  <div class="divider"></div>
+  <div class="notices-grid reveal" id="noticesGrid">
+    <!-- filled by JS / fallback static below -->
+    <div class="notice-card">
+      <div class="notice-date"><div class="day">15</div><div class="mon">Chai</div></div>
+      <div class="notice-info">
+        <h4>Annual Sports Day 2081</h4>
+        <p>All students are requested to participate in the annual sports event. Inter-house competitions in track, field and team sports.</p>
+        <span class="notice-tag">📣 Event</span>
+      </div>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date"><div class="day">28</div><div class="mon">Falg</div></div>
+      <div class="notice-info">
+        <h4>Parent-Teacher Meeting</h4>
+        <p>Guardians of Grade 9 & 10 students are cordially invited to attend the PTM session regarding exam preparation.</p>
+        <span class="notice-tag">📋 Meeting</span>
+      </div>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date"><div class="day">01</div><div class="mon">Bais</div></div>
+      <div class="notice-info">
+        <h4>Admission Open – 2081 B.S.</h4>
+        <p>New admissions open for all grades. Bring required documents and mark sheets to the school office between 10 AM–3 PM.</p>
+        <span class="notice-tag">🎓 Admission</span>
+      </div>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date"><div class="day">10</div><div class="mon">Magh</div></div>
+      <div class="notice-info">
+        <h4>First Term Exam Results</h4>
+        <p>First term examination results have been published. Students may collect their report cards from the class teacher.</p>
+        <span class="notice-tag">📊 Result</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPAL MESSAGE -->
+<section class="principal-section">
+  <div class="principal-inner reveal">
+    <div>
+      <div class="principal-avatar" id="principalAvatar">👨‍💼</div>
+    </div>
+    <div>
+      <blockquote class="principal-quote" id="principalQuote">
+        "Education is not just about filling minds with facts — it is about igniting curiosity, building character, and inspiring every student to reach their fullest potential. At Shree Bachchhala, we are committed to walking that journey with each child."
+      </blockquote>
+      <div class="principal-name" id="principalName">Mr. [Principal Name]</div>
+      <div class="principal-title" id="principalTitle">Principal, Shree Bachchhala Secondary School</div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <h2 class="section-title reveal">Our Facilities</h2>
+  <div class="divider"></div>
+  <div class="facilities-grid reveal" id="facilitiesGrid">
+    <div class="facility-item"><div class="ficon">🏫</div><h4>Smart Classrooms</h4></div>
+    <div class="facility-item"><div class="ficon">💻</div><h4>Computer Lab</h4></div>
+    <div class="facility-item"><div class="ficon">📚</div><h4>Library</h4></div>
+    <div class="facility-item"><div class="ficon">⚗️</div><h4>Science Lab</h4></div>
+    <div class="facility-item"><div class="ficon">⚽</div><h4>Sports Ground</h4></div>
+    <div class="facility-item"><div class="ficon">🎭</div><h4>Cultural Hall</h4></div>
+    <div class="facility-item"><div class="ficon">🩺</div><h4>Health Desk</h4></div>
+    <div class="facility-item"><div class="ficon">🚌</div><h4>Transport</h4></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background:#f7eee6;">
+  <h2 class="section-title reveal">School Gallery</h2>
+  <div class="divider"></div>
+  <div class="gallery-grid reveal" id="galleryGrid">
+    <div class="gallery-item">🏫<div class="gallery-caption">School Building</div></div>
+    <div class="gallery-item">🎓<div class="gallery-caption">Graduation Day</div></div>
+    <div class="gallery-item">⚽<div class="gallery-caption">Sports Day</div></div>
+    <div class="gallery-item">🔬<div class="gallery-caption">Science Lab</div></div>
+    <div class="gallery-item">🎭<div class="gallery-caption">Cultural Program</div></div>
+    <div class="gallery-item">📚<div class="gallery-caption">Library</div></div>
+    <div class="gallery-item">🌿<div class="gallery-caption">School Garden</div></div>
+    <div class="gallery-item">🏆<div class="gallery-caption">Award Ceremony</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <h2 class="section-title reveal">Get In Touch</h2>
+  <div class="divider"></div>
+  <div class="contact-grid reveal">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><strong>Address:</strong><br><span id="cAddr">Likhu-6, Nuwakot<br>Bagmati Province, Nepal</span></div></div>
+      <div class="contact-item"><div class="contact-icon">📞</div><div><strong>Phone:</strong><br><span id="cPhone">+977-9843684295</span></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div><strong>Email:</strong><br><span id="cEmail">info@bachchhala.edu.np</span></div></div>
+      <div class="contact-item"><div class="contact-icon">⏰</div><div><strong>Office Hours:</strong><br><span id="cHours">Mon–Fri, 10:00 AM – 4:00 PM</span></div></div>
+    </div>
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--maroon);margin-bottom:22px;">Send a Message</h3>
+      <div class="contact-form">
+        <input type="text" placeholder="Your Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="Your message..."></textarea>
+        <button onclick="alert('Thank you! Your message has been received. We will contact you soon.')">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="devanagari">श्री बच्छला माध्यमिक विद्यालय</div>
+      <h4>Shree Bachchhala Secondary School</h4>
+      <p>Committed to academic excellence and holistic development since 2040 B.S. Serving the community of Likhu-6, Nuwakot with quality education from ECD to Grade 10.</p>
+      <div class="social-links" id="socialLinks">
+        <a class="social-btn" href="#" title="Facebook">📘</a>
+        <a class="social-btn" href="#" title="YouTube">▶️</a>
+        <a class="social-btn" href="#" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#notices">Notices</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Information</h5>
+      <ul>
+        <li><a href="#">Admission Process</a></li>
+        <li><a href="#">Exam Schedule</a></li>
+        <li><a href="#">Fee Structure</a></li>
+        <li><a href="#">Attendance Portal</a></li>
+        <li><a href="#">Results</a></li>
+        <li><a href="#">Staff Directory</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="footerYear">2081 B.S. / 2024 A.D.</span> <span>Shree Bachchhala Secondary School</span>, Likhu-6, Nuwakot. Estd. 2040 B.S. All rights reserved.</p>
+  </div>
+</footer>
+
+<script type="module">
+// ═══════════════════════════════════════════
+//  FIREBASE REALTIME DATA BRIDGE
+//  Reads live from Firebase — updates instantly
+//  when admin publishes changes
+// ═══════════════════════════════════════════
+import { initializeApp }          from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey:            "AIzaSyCMmUKlZ_vL6pXG5OCD7jKTjeoLluEUJhA",
+  authDomain:        "bachchhala-school.firebaseapp.com",
+  databaseURL:       "https://bachchhala-school-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:         "bachchhala-school",
+  storageBucket:     "bachchhala-school.firebasestorage.app",
+  messagingSenderId: "395143885224",
+  appId:             "1:395143885224:web:70bfb920cc510900802d9d"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getDatabase(app);
+
+// Listen LIVE — page updates the moment admin saves
+onValue(ref(db, 'schoolData'), (snapshot) => {
+  const d = snapshot.val();
+  if (d) applyData(d);
+});
+
+// Fallback: also try localStorage (offline / first load)
+const STORE_KEY = 'bachchhala_school_data';
+
+function loadLocalData() {
+  try { const r = localStorage.getItem(STORE_KEY); return r ? JSON.parse(r) : null; }
+  catch(e) { return null; }
+}
+
+function applyData(d) {
+  if (!d) return;
+
+  // ── HERO ──
+  if (d.hero) {
+    let headline = (d.hero.line1 || '') + '<br>' + (d.hero.line2 || '');
+    (d.hero.highlights || []).forEach(w => {
+      headline = headline.replace(w, `<span>${w}</span>`);
+    });
+    document.getElementById('heroQuote').innerHTML = headline;
+    document.getElementById('heroSub').textContent = d.hero.sub || '';
+  }
+
+  // ── TICKER ──
+  if (d.ticker && d.ticker.length) {
+    const el = document.getElementById('tickerEl');
+    if (d.settings && !d.settings.showTicker) { el.style.display = 'none'; }
+    else {
+      el.style.display = 'flex';
+      const doubled = [...d.ticker, ...d.ticker].map(t => `<span>${t}</span>`).join('');
+      document.getElementById('tickerTrack').innerHTML = doubled;
+    }
+  }
+
+  // ── STATS ──
+  if (d.stats) {
+    const bar = document.getElementById('statsBar');
+    if (d.settings && !d.settings.showStats) { bar.style.display = 'none'; }
+    else {
+      bar.innerHTML = d.stats.map((s, i) =>
+        `<div class="stat-item"${i === d.stats.length-1 ? '' : ''}>
+          <div class="stat-num">${s.value}</div>
+          <div class="stat-label">${s.label}</div>
+        </div>`
+      ).join('');
+    }
+  }
+
+  // ── ABOUT ──
+  if (d.about) {
+    if (d.about.mission) document.getElementById('missionTxt').textContent = d.about.mission;
+    if (d.about.vision)  document.getElementById('visionTxt').textContent  = d.about.vision;
+    if (d.about.values)  document.getElementById('valuesTxt').textContent  = d.about.values;
+  }
+
+  // ── NOTICES ──
+  if (d.notices && d.notices.length) {
+    const typeLabel = { event:'📣 Event', meeting:'📋 Meeting', admission:'🎓 Admission', result:'📊 Result', general:'📌 General' };
+    document.getElementById('noticesGrid').innerHTML = d.notices.map(n => `
+      <div class="notice-card">
+        <div class="notice-date"><div class="day">${n.day}</div><div class="mon">${n.mon}</div></div>
+        <div class="notice-info">
+          <h4>${n.title}</h4>
+          <p>${n.desc}</p>
+          <span class="notice-tag">${typeLabel[n.type] || '📌 Notice'}</span>
+        </div>
+      </div>`).join('');
+  }
+
+  // ── PRINCIPAL ──
+  if (d.principal) {
+    const p = d.principal;
+    const av = document.getElementById('principalAvatar');
+    av.innerHTML = p.photo ? `<img src="${p.photo}" alt="${p.name}">` : '👨‍💼';
+    if (p.msg)   document.getElementById('principalQuote').textContent = p.msg;
+    if (p.name)  document.getElementById('principalName').textContent  = p.name;
+    if (p.title) document.getElementById('principalTitle').textContent = p.title;
+  }
+
+  // ── FACILITIES ──
+  if (d.facilities && d.facilities.length) {
+    document.getElementById('facilitiesGrid').innerHTML = d.facilities.map(f =>
+      `<div class="facility-item"><div class="ficon">${f.icon}</div><h4>${f.name}</h4></div>`
+    ).join('');
+  }
+
+  // ── GALLERY ──
+  if (d.gallery && d.gallery.length) {
+    const galSection = document.getElementById('gallery');
+    if (d.settings && !d.settings.showGallery) { galSection.style.display = 'none'; }
+    else {
+      const bgColors = [
+        'linear-gradient(135deg,#c8a0b0,#7B1C2E)',
+        'linear-gradient(135deg,#a0b8c8,#1A3A6B)',
+        'linear-gradient(135deg,#b8c8a0,#2d6b2a)',
+        'linear-gradient(135deg,#c8c0a0,#6b5a2a)',
+        'linear-gradient(135deg,#c8a8c0,#6b2a5a)',
+        'linear-gradient(135deg,#a8c8c0,#2a6b5a)',
+        'linear-gradient(135deg,#c8c8a0,#6b6b2a)',
+        'linear-gradient(135deg,#b0a0c8,#4b2a6b)'
+      ];
+      document.getElementById('galleryGrid').innerHTML = d.gallery.map((g, i) =>
+        `<div class="gallery-item" style="background:${bgColors[i % bgColors.length]}">
+          ${g.src ? `<img src="${g.src}" alt="${g.caption}">` : (g.emoji || '📸')}
+          <div class="gallery-caption">${g.caption}</div>
+        </div>`
+      ).join('');
+    }
+  }
+
+  // ── CONTACT ──
+  if (d.contact) {
+    const c = d.contact;
+    if (c.address) { document.getElementById('topAddr').textContent = c.address; document.getElementById('cAddr').innerHTML = c.address.replace(', ', ',<br>'); }
+    if (c.phone)   { document.getElementById('topPhone').textContent = c.phone; document.getElementById('cPhone').textContent = c.phone; }
+    if (c.email)   { const em = document.getElementById('topEmail'); em.textContent = c.email; em.href = 'mailto:' + c.email; document.getElementById('cEmail').textContent = c.email; }
+    if (c.hours)   document.getElementById('cHours').textContent = c.hours;
+
+    // social links
+    const sl = document.getElementById('socialLinks');
+    sl.innerHTML = '';
+    const fb = c.facebook || '#'; const yt = c.youtube || '#'; const wa = c.whatsapp ? 'https://wa.me/' + c.whatsapp.replace(/\D/g,'') : '#';
+    sl.innerHTML = `<a class="social-btn" href="${fb}" title="Facebook">📘</a><a class="social-btn" href="${yt}" title="YouTube">▶️</a><a class="social-btn" href="${wa}" title="WhatsApp">💬</a>`;
+  }
+
+  // ── CONTACT SECTION visibility ──
+  if (d.settings && !d.settings.showContact) {
+    document.getElementById('contact').style.display = 'none';
+  }
+
+  // ── FOOTER YEAR ──
+  if (d.settings) {
+    document.getElementById('footerYear').textContent =
+      (d.settings.academicYear || '2081') + ' B.S. / ' + (d.settings.adYear || '2024') + ' A.D.';
+  }
+}
+
+// On first load try localStorage as offline fallback
+const localD = loadLocalData();
+if (localD) applyData(localD);
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+// ── Active nav highlight ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(l => {
+    l.style.color = l.getAttribute('href') === '#' + current ? 'var(--deep-maroon)' : '';
+  });
+});
+</script>
+</body>
+</html>
