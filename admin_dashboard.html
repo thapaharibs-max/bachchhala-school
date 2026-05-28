@@ -518,12 +518,14 @@ tbody tr:hover{background:#faf5f0}
 <!-- TOAST -->
 <div class="toast" id="toast"><span id="toastMsg">✅ Saved!</span></div>
 
-<script type="module">
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
 // ═══════════════════════════════════════════════
 //  FIREBASE + LOCALSTORAGE DUAL STORE
 // ═══════════════════════════════════════════════
-import { initializeApp }                        from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+
 
 const firebaseConfig = {
   apiKey:            "AIzaSyCMmUKlZ_vL6pXG5OCD7jKTjeoLluEUJhA",
@@ -534,9 +536,9 @@ const firebaseConfig = {
   messagingSenderId: "395143885224",
   appId:             "1:395143885224:web:70bfb920cc510900802d9d"
 };
-const app      = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const dbRef    = ref(database, 'schoolData');
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const dbRef = database.ref( 'schoolData');
 
 const STORE_KEY = 'bachchhala_school_data';
 const DEFAULT_DATA = {
@@ -571,16 +573,14 @@ let DB = {};
 let isDirty = false;
 
 async function loadDB(){
-  // 1. Try Firebase first
   try {
-    const snap = await get(dbRef);
+    const snap = await dbRef.get();
     if (snap.exists()) {
       DB = snap.val();
-      localStorage.setItem(STORE_KEY, JSON.stringify(DB)); // cache locally
+      localStorage.setItem(STORE_KEY, JSON.stringify(DB));
       return;
     }
-  } catch(e) { console.warn('Firebase load failed, using localStorage:', e); }
-  // 2. Fallback to localStorage
+  } catch(e) { console.warn('Firebase load failed:', e); }
   try {
     const r = localStorage.getItem(STORE_KEY);
     DB = r ? JSON.parse(r) : JSON.parse(JSON.stringify(DEFAULT_DATA));
@@ -590,11 +590,9 @@ async function loadDB(){
 }
 
 async function saveDB(){
-  // Save to localStorage (instant)
   localStorage.setItem(STORE_KEY, JSON.stringify(DB));
-  // Save to Firebase (broadcasts to all visitors)
   try {
-    await set(dbRef, DB);
+    await dbRef.set(DB);
     isDirty = false;
     document.getElementById('saveDot').classList.remove('dirty');
     showToast('🔥 Published to Firebase! Website updated live.');
@@ -989,8 +987,10 @@ async function resetData(){
   if(!confirm('⚠️ This will RESET all data to defaults. Continue?'))return;
   localStorage.removeItem(STORE_KEY);
   DB = JSON.parse(JSON.stringify(DEFAULT_DATA));
-  try { await set(dbRef, DB); showToast('🔄 Reset & published to Firebase!'); }
+  try { await dbRef.set(DB); showToast('🔄 Reset & published to Firebase!'); }
   catch(e) { showToast('🔄 Reset locally — Firebase offline.'); }
+  populateForms();renderDashboard();
+}
   populateForms();renderDashboard();
 }
 
@@ -1002,21 +1002,7 @@ async function init(){
 }
 init();
 
-// expose functions needed by onclick attributes
-window.showPage=showPage; window.switchTab=switchTab;
-window.openModal=openModal; window.closeModal=closeModal;
-window.markDirty=markDirty; window.saveAll=saveAll;
-window.addNotice=addNotice; window.deleteNotice=deleteNotice;
-window.addStaff=addStaff; window.deleteStaff=deleteStaff;
-window.addGalleryPhoto=addGalleryPhoto; window.deleteGalleryPhoto=deleteGalleryPhoto;
-window.previewGalleryPhoto=previewGalleryPhoto; window.previewNewStaff=previewNewStaff;
-window.uploadPrincipalPhoto=uploadPrincipalPhoto;
-window.previewGalleryPhoto=previewGalleryPhoto;
-window.previewNewStaff=previewNewStaff;
-window.saveAbout=saveAbout; window.saveFacilities=saveFacilities;
-window.addFacilityRow=addFacilityRow; window.saveContact=saveContact;
-window.saveSettings=saveSettings; window.resetData=resetData;
-window.updateHeroPreview=updateHeroPreview;
+// functions are globally available (non-module script)
 </script>
 </body>
 </html>
